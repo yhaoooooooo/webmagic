@@ -1,5 +1,6 @@
 package us.codecraft.webmagic.utils;
 
+import org.apache.commons.lang3.StringUtils;
 import us.codecraft.webmagic.model.annotation.ExtractBy;
 import us.codecraft.webmagic.selector.*;
 
@@ -19,7 +20,10 @@ public class ExtractorUtils {
         Selector selector;
         switch (extractBy.type()) {
             case Css:
-                selector = new CssSelector(value);
+
+                String attr = extractBy.attribute();
+                    selector = StringUtils.isEmpty(attr) ? new CssSelector(value) : new CssSelector(value,attr);
+
                 break;
             case Regex:
                 selector = new RegexSelector(value);

@@ -22,6 +22,12 @@ public @interface ExtractBy {
     String value();
 
     /**
+     * Attribute for Css Selector
+     *
+     * @return attribute in html tag
+     */
+    String attribute() default "";
+    /**
      * types of extractor expressions
      */
     public static enum Type {XPath, Regex, Css, JsonPath}
